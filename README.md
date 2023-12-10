@@ -7,8 +7,9 @@ The repository contains some of the code used in the project aiming at predictin
 <b>List of files</b>
 
 <ul>
-  <li><a href="https://github.com/mbatsch/gear_vibrations/blob/main/transmission_error.m">transmission_error.m</a> - calculation of transmission error</li>
-  <li><a href="https://github.com/mbatsch/gear_vibrations/blob/main/TE_envelope.m">TE_envelope.m</a> - calculation of the envelope of transmission error signal</li>
-  <li><a href="https://github.com/mbatsch/gear_vibrations/blob/main/vibrations.py">vibrations.py</a> - comparative signal analysis and visualisation</li>
+  <li><a href="https://github.com/mbatsch/gear_honing/blob/main/meshing_eq_solve.m">meshing_eq_solve.m</a> - discrete solving the nonlinear system of meshing equations to obtain tool surface of action</li>
+  <li><a href="https://github.com/mbatsch/gear_honing/blob/main/tool_profile.m">tool_profile.m</a> - calculation of the honing tool profile</li>
+  <li><a href="https://github.com/mbatsch/gear_honing/blob/main/transverse.m">transverse.m</a> - function for obtaining transverse section of surface</li>
+  <li><a href="https://github.com/mbatsch/gear_honing/blob/main/deviation.m">deviation.m</a> - function for estimation of the distance measured through unit normal between two plane curves</li>
 </ul>
 
