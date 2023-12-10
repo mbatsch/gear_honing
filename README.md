@@ -1,8 +1,8 @@
-# Vibration excitation in gearboxes due to surface deviations
+# The method of prediction of tooth profile deviations in gear honing
 
 <b>Brief description</b>
 
-The repository contains some of the code used in the project aiming at obtaining the influence of gear tooth topography errors on vibration excitation. More details can be found <a href="https://mbatsch.github.io/portfolio/honing.html">here</a> and in publication <a href="https://doi.org/10.1115/1.4047351">doi: 10.1115/1.4047351</a>.
+The repository contains some of the code used in the project aiming at predicting the tooth profile of aerospace gear after honing. More details can be found <a href="https://mbatsch.github.io/portfolio/honing.html">here</a> and in publication <a href="https://doi.org/10.1115/1.4047351">doi: 10.1115/1.4047351</a>.
 
 <b>List of files</b>
 
