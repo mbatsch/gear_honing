@@ -1,8 +1,4 @@
-clear all
-close all
-clc
-
-load dane.mat
+load data.mat
 
 global fisymN;
 global rbN;
@@ -11,25 +7,9 @@ load X.mat
 load Y.mat
 load Z.mat
 
-figure
-surf(xNN,yNN,zNN,'FaceColor','red','FaceAlpha',0.5);%,'MeshStyle','column')
-hold on
-% t=0:0.01:2*pi;
-% plot(rN*cos(t),rN*sin(t),'-r')
-% hold on
-% plot(rfoN*cos(t),rfoN*sin(t),'-b')
-% hold on
-% plot(raefN*cos(t),raefN*sin(t),'-g')
-xlabel('x_N')
-ylabel('y_N')
-zlabel('z_N')
-title('powierzchnia dzia豉nia narzedzia')
-grid on
-axis equal
+% --- Transverse section of tool surface of action
 
-
-% Przekr鎩 czo這wy powierzchni dzialania narz璠zia
-[xt yt zt] = czolowy(xNN, yNN, zNN);
+[xt yt zt] = transverse(xNN, yNN, zNN);
 Wt=[xt;yt;zt]';
 Wtsort=sortrows(Wt,2);
 xt=Wtsort(:,1);
@@ -52,35 +32,9 @@ plot(dforN/2*cos(fi),dforN/2*sin(fi),'-k')
 title('przekroj czolowy powierzchni dzia豉nia')
 grid on
 axis equal
-hold on
-% [X,Y,Z] = cylinder(rfoN,100);
-% surf(X,Y,bN*Z-bN/2);
 
-% Przekr鎩 normalny narz璠zia obwiednia
-% [xn yn zn] = normalny(xNN, yNN, zNN,BetaN);
-% Wn=[xn;yn;zn]';
-% Wnsort=sortrows(Wn,2);
-% xn=Wnsort(:,1);
-% yn=Wnsort(:,2);
-% zn=Wnsort(:,3);
-% figure
-% plot3(xn,yn,zn,'-o')
-% title('przekroj normalny powierzchni dzia豉nia')
-% grid on
-% axis equal
-% hold on
-% [X,Y,Z] = cylinder(rfoN,100);
-% surf(X,Y,bN*Z-bN/2);
+% --- Unmodified involute of tool
 
-% hold on
-% plot(Xtsort,Ytsort,'-','Linewidth',2)
-% grid on
-% axis equal
-% title('Przekr鎩 czo這wy powierzchni dzia豉nia 2D');
-% hold on
-% plot(rfoN*cos(t),rfoN*sin(t),'-b')
-
-% czysta ewolwenta narz璠zia
 snN=en;
 enN=sn;
 stN=snN/cos(BetaN);
@@ -110,19 +64,19 @@ axis equal
 hold on
 [X,Y,Z] = cylinder(rfoN,100);
 surf(X,Y,bN*Z-bN/2);
-%odch
 
+% --- Deviation
 
-[odl diam xc yc XN YN] = odchylka(xt,yt,xewN,yewN);
+[odl diam xc yc XN YN] = dev(xt,yt,xewN,yewN);
 figure
 plot(odl/0.001,diam,'-')
 
-%porownanie w przekro czolowym
+% --- Visualisation of transverse profiles
+
 figure
 plot(xt,yt,'-r')
 hold on
 plot(xewN,yewN,'-b')
-title('porownanie przekr czolowy')
 grid on
 axis equal
 hold on
@@ -138,17 +92,15 @@ hold on
 plot(xc,yc,'o')
 hold on
 plot(XN,YN,'o')
-% hold on
-% [X,Y,Z] = cylinder(rfoN,100);
-% surf(X,Y,bN*Z-bN/2);
 
-%apprx. 
+% --- Approximation 
 
 Diam=[daefN darN dforN dfoNeff];
 MODmin=-[4 0 0 11.5];
 MODmax=-[8 2.8 2.8 19];
 
-% odchylenie od ewolwenty w przekroju czolowym
+% --- Deviation from involute in transverse plane
+
 figure
 plot(odl/0.001,diam,'-b')
 hold on;
@@ -163,7 +115,6 @@ hold on;
 plot([15 -15],[darN, darN],'--b')
 hold on;
 plot([15 -15],[daefN, daefN],'--b')
-%title('odchylka w przekr czolowym')
 ylabel('d_y_T [mm]')
 xlabel('dist [um]')
 grid on
@@ -181,6 +132,6 @@ ylabel('d_y_N [mm]')
 xlabel('C_\alpha_T [um]')
 namesy = {['d_f_o_N=' num2str(dfoN)]; ['d_C_f_o_N=' num2str(dforN)]; ['d_C_a_N=' num2str(darN)]; ['d_a_N=' num2str(daN)]};
 set(gca,'ytick',[dfoN dforN darN daefN],'yticklabel',namesy)
-set(gca,'xtick',[-20:5:5])%,'xticklabel',[])
+set(gca,'xtick',[-20:5:5])
 axis tight
 
