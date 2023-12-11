@@ -58,7 +58,7 @@ yewN=rsymN(2,:);
 
 figure
 plot(xewN,yewN,'-r')
-title('czysta ewolwenta narzedzia')
+title('Unmodified involute of tool')
 grid on
 axis equal
 hold on
